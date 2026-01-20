@@ -129,10 +129,12 @@ if query_text:
 
     st.subheader("✅ Best Match")
     best = results[0]
-    st.image(best["path"], width=300)
+    best_img = Image.open(best["path"])
+    st.image(best_img, width=300)
 
     st.subheader("🔁 Recommended Similar T-Shirts")
     cols = st.columns(len(results) - 1)
 
     for col, item in zip(cols, results[1:]):
-        col.image(item["path"], width=200)
+        img = Image.open(item["path"])
+        col.image(img, width=200)
