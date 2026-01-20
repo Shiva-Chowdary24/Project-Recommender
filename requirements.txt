@@ -1,0 +1,8 @@
+streamlit
+torch
+transformers
+pillow
+faiss-cpu
+faster-whisper
+audio-recorder-streamlit
+numpy

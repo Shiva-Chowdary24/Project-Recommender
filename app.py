@@ -132,14 +132,23 @@ if query_text:
 
     st.subheader("✅ Best Match")
     best = results[0]
+<<<<<<< HEAD
     best_img_path = resolve_image_path(best["path"])
     best_img = Image.open(best_img_path)
+=======
+    best_img = Image.open(best["path"])
+>>>>>>> a1cb9cd038c55fe2a93d11b4524083937dae5a3f
     st.image(best_img, width=300)
 
     st.subheader("🔁 Recommended Similar T-Shirts")
     cols = st.columns(len(results) - 1)
 
     for col, item in zip(cols, results[1:]):
+<<<<<<< HEAD
         img_path = resolve_image_path(item["path"])
         img = Image.open(img_path)
         col.image(img, width=200)
+=======
+        img = Image.open(item["path"])
+        col.image(img, width=200)
+>>>>>>> a1cb9cd038c55fe2a93d11b4524083937dae5a3f
