@@ -1,6 +1,9 @@
 import os
 os.environ["HF_HUB_DISABLE_SYMLINKS"] = "1"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
+def resolve_image_path(rel_path):
+    return os.path.join(BASE_DIR, rel_path)
 import streamlit as st
 import torch
 import faiss
@@ -129,10 +132,14 @@ if query_text:
 
     st.subheader("✅ Best Match")
     best = results[0]
-    st.image(best["path"], width=300)
+    best_img_path = resolve_image_path(best["path"])
+    best_img = Image.open(best_img_path)
+    st.image(best_img, width=300)
 
     st.subheader("🔁 Recommended Similar T-Shirts")
     cols = st.columns(len(results) - 1)
 
     for col, item in zip(cols, results[1:]):
-        col.image(item["path"], width=200)
+        img_path = resolve_image_path(item["path"])
+        img = Image.open(img_path)
+        col.image(img, width=200)

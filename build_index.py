@@ -6,6 +6,7 @@ import numpy as np
 from PIL import Image
 from transformers import CLIPProcessor, CLIPModel
 
+
 IMAGE_FOLDER = "tshirt"
 BATCH_SIZE = 8
 EMB_FILE = "image_embeddings.npy"
@@ -20,10 +21,11 @@ model = CLIPModel.from_pretrained(model_name).to(device)
 processor = CLIPProcessor.from_pretrained(model_name)
 
 image_paths = [
-    os.path.join(IMAGE_FOLDER, f)
+    f"{IMAGE_FOLDER}/{f}"
     for f in os.listdir(IMAGE_FOLDER)
     if f.lower().endswith((".jpg", ".jpeg", ".png", ".webp"))
 ]
+
 
 all_embeddings = []
 
